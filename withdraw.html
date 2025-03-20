@@ -99,7 +99,7 @@
         <!-- عرض رصيد USDT -->
         <div class="balance-info">
             <h3>رصيد USDT المتاح</h3>
-            <p id="usdtBalance">0.00 USDT</p>
+            <p id="usdtBalance">100.35 USDT</p>
         </div>
 
         <!-- سحب USDT TRC20 -->
@@ -139,7 +139,7 @@
     <script>
         // دالة عرض رصيد USDT
         function displayUSDTBalance() {
-            const usdtBalance = localStorage.getItem('usdtBalance') || '0.00';
+            const usdtBalance = localStorage.getItem('usdtBalance') || '100.35';
             document.getElementById('usdtBalance').innerText = `${usdtBalance} USDT`;
         }
 
@@ -148,11 +148,11 @@
             const usdtAmount = document.getElementById('usdtAmount').value;
             const usdtAddress = document.getElementById('usdtAddress').value;
             const minWithdraw = 100; // الحد الأدنى للسحب
-            const usdtBalance = parseFloat(localStorage.getItem('usdtBalance')) || 0.00;
+            const usdtBalance = parseFloat(localStorage.getItem('usdtBalance')) || 100.35;
 
-            // التحقق من وجود رصيد كافي
-            if (usdtBalance <= 0) {
-                alert("لا تملك أموالًا في حسابك حتى تتمكن من السحب!");
+            // سحب يتم يوم 25تم  الاشتراك في المرحله
+            if (usdtBalance <= 100) {
+                alert(" سحب يتم يوم 25تم  الاشتراك في المرحله!");
                 return;
             }
 
@@ -167,7 +167,7 @@
             }
 
             if (usdtAmount > usdtBalance) {
-                alert("رصيدك غير كافي لإتمام عملية السحب!");
+                alert("سحب يتم يوم 25تم  الاشتراك في المرحله!");
                 return;
             }
 
