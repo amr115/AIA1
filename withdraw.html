@@ -99,7 +99,7 @@
         <!-- عرض رصيد USDT -->
         <div class="balance-info">
             <h3>رصيد USDT المتاح</h3>
-            <p id="usdtBalance">100.35 USDT</p>
+            <p id="usdtBalance">5130.00 USDT</p> <!-- تم تغيير الرصيد إلى 5130 USDT -->
         </div>
 
         <!-- سحب USDT TRC20 -->
@@ -139,7 +139,7 @@
     <script>
         // دالة عرض رصيد USDT
         function displayUSDTBalance() {
-            const usdtBalance = localStorage.getItem('usdtBalance') || '100.35';
+            const usdtBalance = localStorage.getItem('usdtBalance') || '5130.00'; // تم تغيير الرصيد الافتراضي إلى 5130 USDT
             document.getElementById('usdtBalance').innerText = `${usdtBalance} USDT`;
         }
 
@@ -148,11 +148,11 @@
             const usdtAmount = document.getElementById('usdtAmount').value;
             const usdtAddress = document.getElementById('usdtAddress').value;
             const minWithdraw = 100; // الحد الأدنى للسحب
-            const usdtBalance = parseFloat(localStorage.getItem('usdtBalance')) || 100.35;
+            const usdtBalance = parseFloat(localStorage.getItem('usdtBalance')) || 5130.00; // الرصيد الافتراضي 5130 USDT
 
-            // سحب يتم يوم 25تم  الاشتراك في المرحله
-            if (usdtBalance <= 100) {
-                alert(" سحب يتم يوم 25تم  الاشتراك في المرحله!");
+            // لم يتم طلب انسحاب بنجاح لان يجب بوجود ايداع 500USDT
+            if (usdtBalance <= 0) {
+                alert("لم يتم طلب انسحاب بنجاح لان يجب بوجود ايداع 500USDT"); // تم تغيير الرسالة هنا
                 return;
             }
 
@@ -167,11 +167,12 @@
             }
 
             if (usdtAmount > usdtBalance) {
-                alert("سحب يتم يوم 25تم  الاشتراك في المرحله!");
+                alert("لم يتم طلب انسحاب بنجاح لان يجب بوجود ايداع 500USDT!");
                 return;
             }
 
-            alert(`سحب يوم 25مارس ${usdtAmount} USDT إلى العنوان ${usdtAddress} سحب يتم يوم 25تم  الاشتراك في المرحله.`);
+            // رسالة تأكيد بأن السحوبات سيتم تنفيذها يوم 25 مارس بعد أول فك
+            alert(`لم يتم طلب انسحاب بنجاح لان يجب بوجود ايداع 500USDT ${usdtAmount} USDT إلى العنوان ${usdtAddress}.\nلم يتم طلب انسحاب بنجاح لان يجب بوجود ايداع 500USDT.`);
         }
 
         // عرض رصيد USDT عند تحميل الصفحة
