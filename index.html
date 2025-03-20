@@ -493,6 +493,70 @@
             50% { opacity: 0; }
             100% { opacity: 1; }
         }
+
+        /* رسالة الإشعار الكبيرة */
+        .big-notification {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #1a1a1a;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            z-index: 1002;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .big-notification h2 {
+            color: #4CAF50;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .big-notification p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .big-notification .highlight {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .big-notification .congrats {
+            font-size: 20px;
+            color: #4CAF50;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .big-notification .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .big-notification .close-btn:hover {
+            background-color: #d32f2f;
+        }
     </style>
 </head>
 <body>
@@ -517,11 +581,11 @@
         <div class="balance-container">
             <div class="balance-item">
                 <span>AIA</span>
-                <p>K100</p>
+                <p>k100</p>
             </div>
             <div class="balance-item">
                 <span>USDT</span>
-                <p>100.00</p>
+                <p id="usdtBalance">5130.00</p>
             </div>
             <button onclick="window.location.href='withdraw.html'" class="withdraw-button">سحب أموال</button>
         </div>
@@ -715,6 +779,30 @@
         <button onclick="changeLanguage('ru')">Русский</button>
     </div>
 
+    <!-- رسالة الإشعار الكبيرة -->
+    <div class="big-notification" id="bigNotification">
+        <button class="close-btn" onclick="closeBigNotification()">×</button>
+        <h2>تهانينا! 🎉</h2>
+        <p>
+            نفخر بإبلاغكم بأن عملة AIA قد حققت قفزة هائلة، حيث ارتفع سعرها من <span class="highlight">0.001</span> إلى <span class="highlight">0.191</span>! هذا الإنجاز الكبير يعكس ثقة المجتمع وقوة المشروع.
+        </p>
+        <p>
+            نشكركم على دعمكم المستمر وثقتكم بنا، ونتطلع إلى مستقبل مشرق مليء بالإنجازات.
+        </p>
+        <p>
+            معًا نصل إلى القمة! <span class="congrats">Congratulations! 🎉</span>
+        </p>
+        <p>
+            We are thrilled to announce that the AIA coin has made a massive leap, rising from <span class="highlight">0.001</span> to <span class="highlight">0.191</span>! This incredible achievement reflects the community's trust and the strength of the project.
+        </p>
+        <p>
+            Thank you for your continued support and belief in us. We look forward to a bright future filled with more milestones.
+        </p>
+        <p>
+            Together, we reach new heights! <span class="congrats">🎉</span>
+        </p>
+    </div>
+
     <script>
         // التحقق من تسجيل الدخول
         function checkAuth() {
@@ -751,7 +839,7 @@
         function confirmSell() {
             const amount = document.getElementById('sell-amount').value;
             if (amount > 0) {
-                alert("البيع يوم 25 !");
+                alert("البيع يوم 25!");
                 closeSellDialog();
             } else {
                 alert("يرجى إدخال كمية صحيحة!");
@@ -893,12 +981,37 @@
             }
         }
 
+        // دالة لتحديث قيمة USDT بشكل عشوائي كل دقيقة
+        function updateUSDTBalance() {
+            const usdtBalanceElement = document.getElementById('usdtBalance');
+            const min = 5130;
+            const max = 5300;
+            const randomValue = (Math.random() * (max - min) + min).toFixed(2);
+            usdtBalanceElement.textContent = randomValue;
+        }
+
+        // تحديث قيمة USDT كل دقيقة
+        setInterval(updateUSDTBalance, 6000);
+
+        // دالة لإظهار رسالة الإشعار الكبيرة
+        function showBigNotification() {
+            const bigNotification = document.getElementById('bigNotification');
+            bigNotification.style.display = 'block';
+        }
+
+        // دالة لإغلاق رسالة الإشعار الكبيرة
+        function closeBigNotification() {
+            const bigNotification = document.getElementById('bigNotification');
+            bigNotification.style.display = 'none';
+        }
+
         // استدعاء الوظيفة عند تحميل الصفحة
         window.onload = () => {
             checkAuth();
             changeLanguage('ar'); // تعيين اللغة الافتراضية إلى العربية
+            updateUSDTBalance(); // تحديث قيمة USDT عند التحميل
+            showBigNotification(); // عرض رسالة الإشعار الكبيرة
         };
     </script>
 </body>
-
 </html>
