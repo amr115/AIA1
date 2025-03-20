@@ -217,7 +217,7 @@
     <!-- قسم السعر -->
     <div class="price-section">
         <h2>AIA Chain (AIA) سعر</h2>
-        <p>1 AIA Chain يساوي <strong id="aiaPrice">$0.002306 USD</strong></p>
+        <p>1 AIA Chain يساوي <strong id="aiaPrice">$0.112306 USD</strong></p>
         <p class="note">غير مُدرج <span style="color: #4CAF50;">(قريبًا)</span></p>
         <p class="note">ملاحظة: هذه العملة غير مُدرجة على Binance (بينانس) للتداول والخدمة.</p>
     </div>
@@ -225,7 +225,7 @@
     <!-- قسم العملة -->
     <div class="currency-section">
         <h3>العملة: USD-$</h3>
-        <p>1 AIA Chain يساوي <strong id="aiaPrice2">$0.002306 USD</strong></p>
+        <p>1 AIA Chain يساوي <strong id="aiaPrice2">$0.112306 USD</strong></p>
         <p class="price-change">بينهم USD <span id="priceChange">-4.83%</span></p>
     </div>
 
@@ -238,16 +238,16 @@
     <!-- قسم معلومات السوق -->
     <div class="market-info">
         <h3>معلومات سوق AIA</h3>
-        <p><span class="highlight">السعر الأعلى خلال 24 ساعة:</span> $0.002481</p>
-        <p><span class="highlight">السعر الأدنى خلال 24 ساعة:</span> $0.002306</p>
+        <p><span class="highlight">السعر الأعلى خلال 24 ساعة:</span> $0.112481</p>
+        <p><span class="highlight">السعر الأدنى خلال 24 ساعة:</span> $0.102306</p>
         <p><span class="highlight">مرتفع كل الوقت:</span> $0.036275</p>
-        <p><span class="highlight">تغيّر السعر (1س):</span> 0%</p>
-        <p><span class="highlight">تغيّر السعر (24س):</span> -4.83%</p>
+        <p><span class="highlight">تغيّر السعر (1س):</span> 822%</p>
+        <p><span class="highlight">تغيّر السعر (24س):</span> 1904%</p>
         <p><span class="highlight">تغيّر السعر (7ي):</span> -5.35%</p>
         <p><span class="highlight">الشعبية:</span> #5664</p>
         <p><span class="highlight">القيمة السوقية:</span> $0</p>
         <p><span class="highlight">الحجم (24 ساعة):</span> $1,080.14</p>
-        <p><span class="highlight">المخزون المتاح للتداول:</span> 0 (0%)</p>
+        <p><span class="highlight">المخزون المتاح للتداول:</span> 5000 (0%)</p>
         <p><span class="highlight">المخزون الإجمالي الأقصى:</span> 13.19B</p>
         <p><span class="highlight">القيمة السوقية المخفضة بالكامل:</span> $30.42M</p>
     </div>
@@ -261,24 +261,24 @@
     <script>
         // دالة لتحديث السعر بشكل عشوائي
         function updatePrice() {
-            const min = 0.00100;
-            const max = 0.00200;
-            const randomPrice = (Math.random() * (max - min) + min).toFixed(5); // سعر عشوائي بين 0.00100 و 0.00200
+            const min = 0.10100;
+            const max = 0.13200;
+            const randomPrice = (Math.random() * (max - min) + min).toFixed(5); // سعر عشوائي بين 0.10100 و 0.13200
             document.getElementById('aiaPrice').textContent = `$${randomPrice} USD`;
             document.getElementById('aiaPrice2').textContent = `$${randomPrice} USD`;
         }
 
         // دالة لتحديث النسبة المئوية بشكل عشوائي
         function updatePriceChange() {
-            const min = 20;
-            const max = 40;
-            const randomChange = (Math.random() * (max - min) + min).toFixed(2); // نسبة عشوائية بين 20% و 40%
+            const min = 6900;
+            const max = 9000;
+            const randomChange = (Math.random() * (max - min) + min).toFixed(2); // نسبة عشوائية بين1900% و 3000%
             document.getElementById('priceChange').textContent = `${randomChange}%`;
         }
 
-        // تحديث السعر والنسبة كل 3 ثوانٍ
-        setInterval(updatePrice, 3000);
-        setInterval(updatePriceChange, 3000);
+        // تحديث السعر والنسبة كل 7 ثوانٍ
+        setInterval(updatePrice, 6000);
+        setInterval(updatePriceChange, 9000);
 
         // بيانات الشارت
         const ctx = document.getElementById('priceChart').getContext('2d');
@@ -288,7 +288,7 @@
                 labels: ['1', '2', '3', '4', '5', '6', '7'],
                 datasets: [{
                     label: 'سعر AIA/USD',
-                    data: [0.00150, 0.00160, 0.00170, 0.00180, 0.00190, 0.00200, 0.00180],
+                    data: [0.10150, 0.10160, 0.10170, 0.10180, 0.10190, 0.10200, 0.10180],
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: '#4CAF50',
                     borderWidth: 2
@@ -299,8 +299,8 @@
                 scales: {
                     y: {
                         beginAtZero: false,
-                        suggestedMin: 0.00100, // الحد الأدنى للرسم البياني
-                        suggestedMax: 0.00200, // الحد الأقصى للرسم البياني
+                        suggestedMin: 0.10100, // الحد الأدنى للرسم البياني
+                        suggestedMax: 0.40200, // الحد الأقصى للرسم البياني
                         title: {
                             display: true,
                             text: 'السعر (دولار)'
@@ -347,16 +347,16 @@
 
         // دالة لتحديث السعر والرسم البياني
         function updatePriceAndChart() {
-            const min = 0.00100;
-            const max = 0.00200;
-            const randomPrice = (Math.random() * (max - min) + min).toFixed(5); // سعر عشوائي بين 0.00100 و 0.00200
+            const min = 0.10100;
+            const max = 0.30200;
+            const randomPrice = (Math.random() * (max - min) + min).toFixed(5); // سعر عشوائي بين 0.10100 و 0.30200
             document.getElementById('aiaPrice').textContent = `$${randomPrice} USD`;
             document.getElementById('aiaPrice2').textContent = `$${randomPrice} USD`;
             updateChart(parseFloat(randomPrice)); // تحديث الرسم البياني
         }
 
-        // تحديث السعر والرسم البياني كل 3 ثوانٍ
-        setInterval(updatePriceAndChart, 3000);
+        // تحديث السعر والرسم البياني كل 7 ثوانٍ
+        setInterval(updatePriceAndChart, 7000);
     </script>
 
 </body>
